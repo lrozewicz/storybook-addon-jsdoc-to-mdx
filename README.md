@@ -19,21 +19,21 @@ This Storybook addon automatically scans your project for JavaScript or TypeScri
 
 To install the addon, run the following command in your terminal:
 
-\```bash
+```bash
 npm install storybook-addon-jsdoc-to-mdx --save-dev
-\```
+```
 
 Or if you prefer using Yarn:
 
-\```bash
+```bash
 yarn add storybook-addon-jsdoc-to-mdx --dev
-\```
+```
 
 ## Usage
 
 After installation, add the addon to your `.storybook/main.js` configuration file:
 
-\```javascript
+```javascript
 module.exports = {
   addons: [
     // other addons
@@ -46,7 +46,7 @@ module.exports = {
     }
   ]
 };
-\```
+```
 
 ## Configuration
 
