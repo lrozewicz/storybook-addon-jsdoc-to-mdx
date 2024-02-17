@@ -1,0 +1,124 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="code/exampleClass" />
+
+## Rectangle
+`code/exampleClass`
+
+**AST Node Type:** *ClassDeclaration*
+
+#### JSDoc annotations:
+
+Represents a rectangle.
+
+```bash
+
+```
+
+#### Code:
+
+```ts
+class Rectangle {
+    private width: number;
+    private height: number;
+    constructor(width: number, height: number) {
+        this.width = width;
+        this.height = height;
+    }
+    area(): number {
+        return this.width * this.height;
+    }
+}
+
+```
+
+## 
+**AST Node Type:** *PropertyDeclaration*
+
+#### JSDoc annotations:
+
+The width of the rectangle.
+
+```bash
+
+```
+
+#### Code:
+
+```ts
+width: number;
+
+```
+
+## 
+**AST Node Type:** *PropertyDeclaration*
+
+#### JSDoc annotations:
+
+The height of the rectangle.
+
+```bash
+
+```
+
+#### Code:
+
+```ts
+height: number;
+
+```
+
+## 
+**AST Node Type:** *Constructor*
+
+#### JSDoc annotations:
+
+Creates an instance of a Rectangle.
+
+```bash
+@param {number} width The width of the rectangle.
+
+@param {number} height The height of the rectangle.
+```
+
+#### Code:
+
+```ts
+constructor(width, number, height, number);
+{
+    this.width = width;
+    this.height = height;
+}
+
+```
+
+## area
+`code/exampleClass`
+
+**AST Node Type:** *MethodDeclaration*
+
+#### JSDoc annotations:
+
+Calculates the area of the rectangle.
+
+```bash
+@returns {number} The area of the rectangle.
+```
+
+#### Code:
+
+```ts
+class Rectangle {
+    private width: number;
+    private height: number;
+    constructor(width: number, height: number) {
+        this.width = width;
+        this.height = height;
+    }
+    area(): number {
+        return this.width * this.height;
+    }
+}
+
+```
+

@@ -1,0 +1,73 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="code/extendingInterfaces" />
+
+## Shape
+`code/extendingInterfaces`
+
+**AST Node Type:** *InterfaceDeclaration*
+
+#### JSDoc annotations:
+
+Basic interface for a shape.
+
+```bash
+
+```
+
+#### Code:
+
+```ts
+interface Shape {
+    color: string;
+}
+
+```
+
+## Rectangle
+`code/extendingInterfaces`
+
+**AST Node Type:** *InterfaceDeclaration*
+
+#### JSDoc annotations:
+
+Extended interface for a rectangle, including shape properties.
+
+```bash
+
+```
+
+#### Code:
+
+```ts
+interface Rectangle extends Shape {
+    width: number;
+    height: number;
+}
+
+```
+
+## createRectangle
+`code/extendingInterfaces`
+
+**AST Node Type:** *FunctionDeclaration*
+
+#### JSDoc annotations:
+
+Function that creates a rectangle.
+
+```bash
+@param {Rectangle} rectangle The rectangle.
+
+@returns {string} A string describing the rectangle.
+```
+
+#### Code:
+
+```ts
+function createRectangle(rectangle: Rectangle): string {
+    return `A ${rectangle.color} rectangle of width ${rectangle.width} and height ${rectangle.height}.`;
+}
+
+```
+

@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="code/genericType" />
+
+## identity
+`code/genericType`
+
+**AST Node Type:** *FunctionDeclaration*
+
+#### JSDoc annotations:
+
+Generic function that returns the argument.
+
+```bash
+@param {T} arg The argument of type T.
+
+@returns {T} The argument of type T.
+
+@template T
+```
+
+#### Code:
+
+```ts
+function identity<T>(arg: T): T {
+    return arg;
+}
+
+```
+

@@ -1,0 +1,30 @@
+{
+  "name": "storybook-addon-jsdoc-to-mdx",
+  "version": "1.0.0",
+  "description": "Automatically generates MDX documentation from JSDoc comments for Storybook.",
+  "keywords": ["storybook", "jsdoc", "mdx", "documentation", "addon"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lrozewicz/storybook-addon-jsdoc-to-mdx.git"
+  },
+  "main": "presets.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "tsc --noEmit --incremental false && jest --silent --maxWorkers=2"
+  },
+  "author": "Łukasz Różewicz <lukasz.rozewicz@lucaswebart.pl>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@storybook/react": ">=6"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "ts-morph": "^21.0.1"
+  }
+}

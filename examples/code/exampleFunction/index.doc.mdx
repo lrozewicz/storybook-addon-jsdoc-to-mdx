@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="code/exampleFunction" />
+
+## add
+`code/exampleFunction`
+
+**AST Node Type:** *FunctionDeclaration*
+
+#### JSDoc annotations:
+
+Adds two numbers together.
+
+```bash
+@param {number} a The first number to add.
+
+@param {number} b The second number to add.
+
+@returns {number} The sum of `a` and `b`.
+```
+
+#### Code:
+
+```ts
+function add(a: number, b: number): number {
+    return a + b;
+}
+
+```
+

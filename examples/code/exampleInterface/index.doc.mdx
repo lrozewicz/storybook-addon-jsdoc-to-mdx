@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="code/exampleInterface" />
+
+## Point
+`code/exampleInterface`
+
+**AST Node Type:** *InterfaceDeclaration*
+
+#### JSDoc annotations:
+
+Interface for a 2D point.
+
+```bash
+
+```
+
+#### Code:
+
+```ts
+interface Point {
+    x: number;
+    y: number;
+}
+
+```
+
+## movePoint
+`code/exampleInterface`
+
+**AST Node Type:** *FunctionDeclaration*
+
+#### JSDoc annotations:
+
+Function that moves a point by a specified delta.
+
+```bash
+@param {Point} point The point to move.
+
+@param {number} dx The change in the x-coordinate.
+
+@param {number} dy The change in the y-coordinate.
+
+@returns {Point} The new position of the point.
+```
+
+#### Code:
+
+```ts
+function movePoint(point: Point, dx: number, dy: number): Point {
+    return { x: point.x + dx, y: point.y + dy };
+}
+
+```
+
