@@ -42,13 +42,14 @@ will be shown in the Storybook as follows
 ## Table of Contents
 
 1. [Requirements](#requirements)
-1. [Installation](#installation)
-2. [Usage](#usage)
-3. [Configuration](#configuration)
-4. [Features](#features)
-5. [Contribution](#contribution)
-6. [License](#license)
-7. [Acknowledgments](#acknowledgments)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Configuration](#configuration)
+5. [Features](#features)
+6. [Future Plans and Development](#future-plans-and-development)
+7. [Contribution](#contribution)
+8. [License](#license)
+9. [Acknowledgments](#acknowledgments)
 
 ## Requirements
 
