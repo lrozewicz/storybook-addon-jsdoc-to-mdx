@@ -65,8 +65,8 @@ The addon can be configured with the following options:
 
 I am always looking to improve and expand the capabilities of my Storybook addon. Some of the features I'm considering for future development include:
 
-- **Custom Documentation Templates**: Allowing users to define their own templates for the generated documentation, giving them more control over the presentation of their components in Storybook.
-- **AI-powered JSDoc Generation**: Exploring the integration of advanced AI (like Large Language Models) to automatically generate JSDoc comments for your components, making the documentation process even more seamless.
+- **Custom Documentation Templates**: Allowing users to define their own templates for the generated documentation, giving them more control over the presentation of their JS/TS code in Storybook.
+- **AI-powered JSDoc Generation**: Exploring the integration of advanced AI (like Large Language Models) to automatically generate JSDoc comments for your code, making the documentation process even more seamless.
 
 ## Contribution
 
