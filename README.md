@@ -1,12 +1,47 @@
 
 # Storybook Addon: JSDoc to MDX
 
+<div align="center">
+  <img src="./assets/images/logo-min.png" width="104" alt="logo">
+  <br/>
+</div>
+<hr/>
+
 ## Description
 
 This Storybook addon automatically scans your project for JavaScript or TypeScript files, extracts JSDoc comments, and generates comprehensive MDX documentation. It integrates seamlessly with Storybook, enhancing your component documentation with detailed insights and examples extracted directly from your source code.
 
+For example, the following TypeScript code:
+
+```typescript
+/**
+ * Interface representing a person with an optional age property.
+ */
+interface Person {
+    name: string;
+    age?: number;
+}
+
+/**
+ * Function that prints a person's name and optionally age if provided.
+ * @param {Person} person The person.
+ */
+function printPerson(person: Person): void {
+    console.log(`Name: ${person.name}`);
+    if (person.age !== undefined) {
+        console.log(`Age: ${person.age}`);
+    }
+}
+```
+
+will be shown in the Storybook as follows
+
+<img src="./assets/images/storybook.png" alt="Storybook" style="width: 100%; height: auto;">
+
+
 ## Table of Contents
 
+1. [Requirements](#requirements)
 1. [Installation](#installation)
 2. [Usage](#usage)
 3. [Configuration](#configuration)
@@ -14,6 +49,12 @@ This Storybook addon automatically scans your project for JavaScript or TypeScri
 5. [Contribution](#contribution)
 6. [License](#license)
 7. [Acknowledgments](#acknowledgments)
+
+## Requirements
+
+- Storybook@>=7.0.0
+
+This addon should work well with any framework. If you find that the addon does not work, please open an issue.
 
 ## Installation
 
