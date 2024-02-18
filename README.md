@@ -61,6 +61,13 @@ The addon can be configured with the following options:
 - **Supports Multiple File Types**: Works with both JavaScript and TypeScript files.
 - **Customizable Path and Extension**: You can specify which directories and file types to include.
 
+## Future Plans and Development
+
+I am always looking to improve and expand the capabilities of my Storybook addon. Some of the features I'm considering for future development include:
+
+- **Custom Documentation Templates**: Allowing users to define their own templates for the generated documentation, giving them more control over the presentation of their components in Storybook.
+- **AI-powered JSDoc Generation**: Exploring the integration of advanced AI (like Large Language Models) to automatically generate JSDoc comments for your components, making the documentation process even more seamless.
+
 ## Contribution
 
 Contributions are welcome! If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
