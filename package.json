@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-jsdoc-to-mdx",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Automatically generates MDX documentation from JSDoc comments for Storybook.",
   "author": "Łukasz Różewicz <lukasz.rozewicz@lucaswebart.pl>",
   "keywords": ["storybook-addons", "jsdoc", "mdx", "documentation"],
@@ -27,10 +27,10 @@
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "jest": "^29.7.0",
-    "ts-jest": "^29.1.2",
-    "typescript": "^5.3.3"
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
-    "ts-morph": "^21.0.1"
+    "ts-morph": "^25.0.0"
   }
 }
