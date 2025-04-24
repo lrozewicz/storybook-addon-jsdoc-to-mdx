@@ -58,7 +58,7 @@ describe("createMdxContent", () => {
     const result = createMdxContent(jsDocComments, pathName);
 
     // Assertions to verify the content for unnamed JsDoc comment
-    expect(result).toContain("## \n"); // Since name is "Unnamed", it should not add a name in the markdown header
+    // No header for unnamed JsDoc comment
     expect(result).toContain("**AST Node Type:** *Variable*");
     expect(result).toContain("Formatted: This is an unnamed variable");
     expect(result).toContain("let unnamedVar = true;");

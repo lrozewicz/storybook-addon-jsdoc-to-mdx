@@ -53,8 +53,8 @@ describe("formatJsDocComment", () => {
          * Simple description.
          */
       `;
-    const expected = "Simple description.\n\n```bash\n\n```";
-    expect(formatJsDocComment(comment)).toBe(expected);
+    const result = formatJsDocComment(comment);
+    expect(result).toBe("> Simple description.");
   });
 
   it("should handle JSDoc comments with tags", () => {
@@ -65,9 +65,12 @@ describe("formatJsDocComment", () => {
          * @returns {number} - example return value.
          */
       `;
-    const expected =
-      "Description with tags.\n\n```bash\n@param {string} param1 - an example parameter.\n\n@returns {number} - example return value.\n```";
-    expect(formatJsDocComment(comment)).toBe(expected);
+    const result = formatJsDocComment(comment);
+    expect(result).toContain("> Description with tags.");
+    expect(result).toContain("#### Parameter:");
+    expect(result).toContain("- `param1` *string* — an example parameter.");
+    expect(result).toContain("#### Returns:");
+    expect(result).toContain("`number`  example return value.");
   });
 
   it("should handle comments with extra spaces and lines", () => {
@@ -80,14 +83,16 @@ describe("formatJsDocComment", () => {
          * 
          */
       `;
-    const expected = "Description with extra spaces and lines.\n\n```bash\n@param {string} param1\n```";
-    expect(formatJsDocComment(comment)).toBe(expected);
+    const result = formatJsDocComment(comment);
+    expect(result).toContain("> Description with extra spaces and lines.");
+    expect(result).toContain("#### Parameter:");
+    expect(result).toContain("- `param1` *string* —");
   });
 
   it("should handle empty JSDoc comments", () => {
     const comment = `/** */`;
-    const expected = "\n\n```bash\n\n```";
-    expect(formatJsDocComment(comment)).toBe(expected);
+    const result = formatJsDocComment(comment);
+    expect(result).toBe(">"); // Empty JSDoc comment yields empty block-quote
   });
 
   it("should handle JSDoc comments without tags", () => {
@@ -96,8 +101,8 @@ describe("formatJsDocComment", () => {
          * Only a description.
          */
       `;
-    const expected = "Only a description.\n\n```bash\n\n```";
-    expect(formatJsDocComment(comment)).toBe(expected);
+    const result = formatJsDocComment(comment);
+    expect(result).toBe("> Only a description.");
   });
 
   it("should handle JSDoc comments with only tags", () => {
@@ -107,7 +112,10 @@ describe("formatJsDocComment", () => {
          * @returns {number}
          */
       `;
-    const expected = "\n\n```bash\n@param {string} param1\n\n@returns {number}\n```";
-    expect(formatJsDocComment(comment)).toBe(expected);
+    const result = formatJsDocComment(comment);
+    expect(result).toContain(">"); // Block-quote with empty description
+    expect(result).toContain("#### Parameter:");
+    expect(result).toContain("- `param1` *string* —");
+    expect(result).toContain("#### Returns:");
   });
 });

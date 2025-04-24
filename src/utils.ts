@@ -1,5 +1,6 @@
 import path from "path";
 import ts from "typescript";
+import { parse } from "comment-parser";
 
 export function removeCommentsFromCode(code: string): string {
   const printer = ts.createPrinter({ removeComments: true });
@@ -28,25 +29,96 @@ export function getPathName(filePath: string, baseDir: string): string {
 
   return path.join(dirName, baseName).replace(/\\/g, "/");
 }
+export function extractMethodFromCode(code: string, methodName: string): string {
+  const sourceFile = ts.createSourceFile(
+    "temp.ts",
+    code,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+  let methodNode: ts.MethodDeclaration | undefined;
+  function visit(node: ts.Node) {
+    if (
+      ts.isMethodDeclaration(node) &&
+      node.name &&
+      node.name.getText() === methodName
+    ) {
+      methodNode = node;
+      return;
+    }
+    ts.forEachChild(node, visit);
+  }
+  visit(sourceFile);
+  if (!methodNode) {
+    return code;
+  }
+  const start = methodNode.getStart(sourceFile);
+  const end = methodNode.end;
+  return code.slice(start, end).trim();
+}
 
-export function formatJsDocComment(comment: string): string {
-  // We remove the leading /** and trailing */ as well as whitespace at the ends of the comment
-  const trimmedComment = comment.replace(/\/\*\*|\*\/|^\s*\*\/gm|\s*$/g, "").trim();
+export function formatJsDocComment(raw: string): string {
+  const trimmedRaw = raw.trim();
+  // Return plain strings unchanged (non JSDoc comments)
+  if (!trimmedRaw.startsWith('/**')) {
+    return trimmedRaw;
+  }
+  // Parse the raw JSDoc comment
+  const { description = '', tags = [] } = parse(trimmedRaw)?.[0] || {};
 
-  // We divide the comment into lines and remove unnecessary whitespace
-  const lines = trimmedComment.split("\n").map((line) => line.replace(/^\s*\*\s?/, "").trim());
+  // Group tags by their `tag` field
+  const grouped = tags.reduce((acc, t) => {
+    (acc[t.tag] = acc[t.tag] ?? []).push(t);
+    return acc;
+  }, {} as Record<string, any[]>);
 
-  // We are looking for the index of the first tag
-  const tagsIndex = lines.findIndex((line) => line.startsWith("@"));
+  // Render the JSDoc description as a Markdown block-quote
+  const quotedDescription = description
+    .trim()
+    .split('\n')
+    .map(line => `> ${line}`)
+    .join('\n');
 
-  // Handling the case where there are no tags
-  if (tagsIndex === -1) {
-    return lines.join("\n").trim() + "\n\n```bash\n\n```";
+  let mdx = quotedDescription + '\n\n';
+
+  // Parameters
+  if (grouped.param) {
+    const paramsBlock = grouped.param
+      .map(t => `- \`${t.name}\` ${t.type ? `*${t.type}*` : ''} — ${t.description.trim().replace(/^-/g, '').trim()}`)
+      .join('\n');
+    mdx += `#### Parameter:\n\n${paramsBlock}\n`;
   }
 
-  // We separate the description from the tags
-  const description = lines.slice(0, tagsIndex).join("\n").trim();
-  const tags = lines.slice(tagsIndex).join("\n").trim().split("@").join("\n@").slice(1);
+  // Returns
+  const returnsGroup = grouped.returns || grouped.return;
+  if (returnsGroup) {
+    const { type = '', description: retDesc = '' } = returnsGroup[0];
+    mdx += `#### Returns:\n${type ? `\`${type}\`` : ''}  ${retDesc}\n`;
+  }
 
-  return `${description}\n\n\`\`\`bash\n${tags}\n\`\`\``;
+  // Example
+  if (grouped.example) {
+    console.log(`:: grouped.example) =`, grouped.example);
+    const { description: exDesc = '', name: exName = '' } = grouped.example[0];
+    mdx += `#### Example:\n\`\`\`ts\n${exName} ${exDesc}\n\`\`\`\n`;
+  }
+
+  // Fallback for other tags
+  Object.entries(grouped).forEach(([tagName, tagList]) => {
+    if (['param', 'return', 'returns', 'example'].includes(tagName)) return;
+
+    const heading = tagName.charAt(0).toUpperCase() + tagName.slice(1);
+    const lines = tagList
+      .map(t =>
+        t.name
+          ? `- \`${t.name}\`${t.type ? ` *${t.type}*` : ''} — ${t.description}`
+          : t.description,
+      )
+      .join('\n');
+
+    mdx += `#### ${heading}:\n${lines}\n`;
+  });
+
+  return mdx.trim();
 }
