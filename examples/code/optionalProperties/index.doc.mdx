@@ -2,20 +2,14 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="code/optionalProperties" />
 
-## Person
-`code/optionalProperties`
+# Person
 
+`code/optionalProperties`
 **AST Node Type:** *InterfaceDeclaration*
 
-#### JSDoc annotations:
+> Interface representing a person with an optional age property.
 
-Interface representing a person with an optional age property.
-
-```bash
-
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 interface Person {
@@ -25,20 +19,18 @@ interface Person {
 
 ```
 
-## printPerson
-`code/optionalProperties`
+# printPerson
 
+`code/optionalProperties`
 **AST Node Type:** *FunctionDeclaration*
 
-#### JSDoc annotations:
+> Function that prints a person's name and optionally age if provided.
 
-Function that prints a person's name and optionally age if provided.
+#### Parameter:
 
-```bash
-@param {Person} person The person.
-```
+- `person` *Person* — The person.
 
-#### Code:
+#### Surse Code:
 
 ```ts
 function printPerson(person: Person): void {

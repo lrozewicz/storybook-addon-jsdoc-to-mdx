@@ -2,20 +2,14 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="code/enums" />
 
-## Color
-`code/enums`
+# Color
 
+`code/enums`
 **AST Node Type:** *EnumDeclaration*
 
-#### JSDoc annotations:
+> Enum representing colors.
 
-Enum representing colors.
-
-```bash
-
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 enum Color {
@@ -26,22 +20,20 @@ enum Color {
 
 ```
 
-## getColorName
-`code/enums`
+# getColorName
 
+`code/enums`
 **AST Node Type:** *FunctionDeclaration*
 
-#### JSDoc annotations:
+> Function that returns the name of a color.
 
-Function that returns the name of a color.
+#### Parameter:
 
-```bash
-@param {Color} color The color.
+- `color` *Color* — The color.
+#### Returns:
+`string`  name of the color.
 
-@returns {string} The name of the color.
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 function getColorName(color: Color): string {

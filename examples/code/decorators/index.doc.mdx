@@ -2,20 +2,18 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="code/decorators" />
 
-## logClass
-`code/decorators`
+# logClass
 
+`code/decorators`
 **AST Node Type:** *FunctionDeclaration*
 
-#### JSDoc annotations:
+> Logging decorator that logs the class instantiation.
 
-Logging decorator that logs the class instantiation.
+#### Parameter:
 
-```bash
-@param {Function} constructor The constructor of the class.
-```
+- `constructor` *Function* — The constructor of the class.
 
-#### Code:
+#### Surse Code:
 
 ```ts
 function logClass(constructor: Function) {
@@ -24,20 +22,14 @@ function logClass(constructor: Function) {
 
 ```
 
-## DecoratedClass
-`code/decorators`
+# DecoratedClass
 
+`code/decorators`
 **AST Node Type:** *ClassDeclaration*
 
-#### JSDoc annotations:
+> Class with a logging decorator.
 
-Class with a logging decorator.
-
-```bash
-
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 @logClass

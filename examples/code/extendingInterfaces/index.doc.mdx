@@ -2,20 +2,14 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="code/extendingInterfaces" />
 
-## Shape
-`code/extendingInterfaces`
+# Shape
 
+`code/extendingInterfaces`
 **AST Node Type:** *InterfaceDeclaration*
 
-#### JSDoc annotations:
+> Basic interface for a shape.
 
-Basic interface for a shape.
-
-```bash
-
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 interface Shape {
@@ -24,20 +18,14 @@ interface Shape {
 
 ```
 
-## Rectangle
-`code/extendingInterfaces`
+# Rectangle
 
+`code/extendingInterfaces`
 **AST Node Type:** *InterfaceDeclaration*
 
-#### JSDoc annotations:
+> Extended interface for a rectangle, including shape properties.
 
-Extended interface for a rectangle, including shape properties.
-
-```bash
-
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 interface Rectangle extends Shape {
@@ -47,22 +35,20 @@ interface Rectangle extends Shape {
 
 ```
 
-## createRectangle
-`code/extendingInterfaces`
+# createRectangle
 
+`code/extendingInterfaces`
 **AST Node Type:** *FunctionDeclaration*
 
-#### JSDoc annotations:
+> Function that creates a rectangle.
 
-Function that creates a rectangle.
+#### Parameter:
 
-```bash
-@param {Rectangle} rectangle The rectangle.
+- `rectangle` *Rectangle* — The rectangle.
+#### Returns:
+`string`  string describing the rectangle.
 
-@returns {string} A string describing the rectangle.
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 function createRectangle(rectangle: Rectangle): string {

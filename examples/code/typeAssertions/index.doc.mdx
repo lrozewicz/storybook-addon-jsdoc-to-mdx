@@ -2,22 +2,20 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="code/typeAssertions" />
 
-## getInputLength
-`code/typeAssertions`
+# getInputLength
 
+`code/typeAssertions`
 **AST Node Type:** *FunctionDeclaration*
 
-#### JSDoc annotations:
+> Function that casts an input to a string and returns its length.
 
-Function that casts an input to a string and returns its length.
+#### Parameter:
 
-```bash
-@param {any} input The input.
+- `input` *any* — The input.
+#### Returns:
+`number`  length of the input string.
 
-@returns {number} The length of the input string.
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 function getInputLength(input: any): number {

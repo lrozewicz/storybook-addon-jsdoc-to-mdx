@@ -2,31 +2,20 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="code/overloadFunction" />
 
-## overloadedFunction
-`code/overloadFunction`
+# overloadedFunction
 
+`code/overloadFunction`
 **AST Node Type:** *FunctionDeclaration*
 
-#### JSDoc annotations:
+> Returns the first argument.
 
-Returns the first argument.
+#### Parameter:
 
-```bash
-@param {number} a The first number.
+- `a` *number* — The first number.
+#### Returns:
+`number`  first number.
 
-@returns {number} The first number.
-
-
-Returns the sum of two arguments.
-
-@param {number} a The first number.
-
-@param {number} b The second number.
-
-@returns {number} The sum of the numbers.
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 function overloadedFunction(a: number, b?: number): number {

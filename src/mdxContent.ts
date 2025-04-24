@@ -2,11 +2,11 @@ import { formatJsDocComment, removeCommentsFromCode, extractMethodFromCode } fro
 import type { JsDocComment } from "./types/common";
 
 export function createMdxContent(jsDocComments: JsDocComment[], pathName: string): string {
-  let mdxContent = ``;
+  let mdxContent = `import { Meta } from '@storybook/blocks';\n\n<Meta title="${pathName}" />\n\n`;
 
   jsDocComments.forEach((comment: JsDocComment) => {
     if (comment.name != "Unnamed") {
-      mdxContent += `# ${comment.name}\n`;
+      mdxContent += `# ${comment.name}\n\n`;
       mdxContent += `\`${pathName}\`\n`;
       mdxContent += `**AST Node Type:** *${comment.type}*\n\n`;
       mdxContent += formatJsDocComment(comment.comment) + "\n\n";
@@ -17,6 +17,8 @@ export function createMdxContent(jsDocComments: JsDocComment[], pathName: string
           : removeCommentsFromCode(comment.code);
       mdxContent += "```ts\n" + codeSnippet + "\n```\n\n";
     } else {
+      mdxContent += `----- \n`;
+      mdxContent += `\`${pathName}\`\n`;
       mdxContent += `**AST Node Type:** *${comment.type}*\n`;
       mdxContent += formatJsDocComment(comment.comment) + "\n\n";
       mdxContent += `#### Surse Code:\n\n`;

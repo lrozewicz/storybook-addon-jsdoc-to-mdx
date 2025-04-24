@@ -2,20 +2,14 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="code/exampleClass" />
 
-## Rectangle
-`code/exampleClass`
+# Rectangle
 
+`code/exampleClass`
 **AST Node Type:** *ClassDeclaration*
 
-#### JSDoc annotations:
+> Represents a rectangle.
 
-Represents a rectangle.
-
-```bash
-
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 class Rectangle {
@@ -32,56 +26,41 @@ class Rectangle {
 
 ```
 
-## 
+----- 
+`code/exampleClass`
 **AST Node Type:** *PropertyDeclaration*
+> The width of the rectangle.
 
-#### JSDoc annotations:
-
-The width of the rectangle.
-
-```bash
-
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 width: number;
 
 ```
 
-## 
+----- 
+`code/exampleClass`
 **AST Node Type:** *PropertyDeclaration*
+> The height of the rectangle.
 
-#### JSDoc annotations:
-
-The height of the rectangle.
-
-```bash
-
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 height: number;
 
 ```
 
-## 
+----- 
+`code/exampleClass`
 **AST Node Type:** *Constructor*
+> Creates an instance of a Rectangle.
 
-#### JSDoc annotations:
+#### Parameter:
 
-Creates an instance of a Rectangle.
+- `width` *number* — The width of the rectangle.
+- `height` *number* — The height of the rectangle.
 
-```bash
-@param {number} width The width of the rectangle.
-
-@param {number} height The height of the rectangle.
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 constructor(width, number, height, number);
@@ -92,33 +71,21 @@ constructor(width, number, height, number);
 
 ```
 
-## area
-`code/exampleClass`
+# area
 
+`code/exampleClass`
 **AST Node Type:** *MethodDeclaration*
 
-#### JSDoc annotations:
+> Calculates the area of the rectangle.
 
-Calculates the area of the rectangle.
+#### Returns:
+`number`  area of the rectangle.
 
-```bash
-@returns {number} The area of the rectangle.
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
-class Rectangle {
-    private width: number;
-    private height: number;
-    constructor(width: number, height: number) {
-        this.width = width;
-        this.height = height;
-    }
-    area(): number {
+area(): number {
         return this.width * this.height;
     }
-}
-
 ```
 

@@ -2,42 +2,34 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="code/complexTypes" />
 
-## StringOrNumber
-`code/complexTypes`
+# StringOrNumber
 
+`code/complexTypes`
 **AST Node Type:** *TypeAliasDeclaration*
 
-#### JSDoc annotations:
+> Type alias for a string or number..
 
-Type alias for a string or number..
-
-```bash
-
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 type StringOrNumber = string | number;
 
 ```
 
-## processFast
-`code/complexTypes`
+# processFast
 
+`code/complexTypes`
 **AST Node Type:** *FunctionDeclaration*
 
-#### JSDoc annotations:
+> Function that takes a string or number and returns it.
 
-Function that takes a string or number and returns it.
+#### Parameter:
 
-```bash
-@param {StringOrNumber} arg The argument of type StringOrNumber.
+- `arg` *StringOrNumber* — The argument of type StringOrNumber.
+#### Returns:
+`StringOrNumber`  argument.
 
-@returns {StringOrNumber} The argument.
-```
-
-#### Code:
+#### Surse Code:
 
 ```ts
 function processFast(arg: StringOrNumber): StringOrNumber {
