@@ -61,6 +61,7 @@ export function extractMethodFromCode(code: string, methodName: string): string 
 function encode(str:string) {
   return str
     .replace(/[-`]/g, '\\$&')   // \- and \`
+    .replace(/[{}]/g, '\\$&')   // \{ and \}
     .replace(/</g, '&lt;')      // <
     .replace(/>/g, '&gt;');     // >
 }
