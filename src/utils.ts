@@ -1,6 +1,6 @@
 import path from "path";
 import ts from "typescript";
-import { parse } from "comment-parser";
+import { parse, Spec } from "comment-parser";
 
 export function removeCommentsFromCode(code: string): string {
   const printer = ts.createPrinter({ removeComments: true });
@@ -79,7 +79,7 @@ export function formatJsDocComment(raw: string): string {
   const grouped = tags.reduce((acc, t) => {
     (acc[t.tag] = acc[t.tag] ?? []).push(t);
     return acc;
-  }, {} as Record<string, any[]>);
+  }, {} as Record<string, Spec[]>);
 
   // Render the JSDoc description as a Markdown block-quote
   const quotedDescription = description
@@ -106,10 +106,28 @@ export function formatJsDocComment(raw: string): string {
   }
 
   // Example
-  if (grouped.example) {
-    console.log(`:: grouped.example) =`, grouped.example);
-    const { description: exDesc = '', name: exName = '' } = grouped.example[0];
-    mdx += `#### Example:\n\`\`\`ts\n${exName} ${exDesc}\n\`\`\`\n`;
+  if (grouped.example && grouped.example.length > 0) {
+    mdx += `#### Example:\n`
+    
+    grouped.example.forEach(e => {
+      const { description: exDesc = '', name: exName = '', source = [] } = e;
+      
+      // Prefer raw source tokens because they keep the original line breaks
+      const rawLines = source
+        .filter(line => typeof line.source === 'string')
+        .slice(1,-1)
+        .map(line => line.source.replace(/^\s*\*\s?/, '')); // strip leading "* "
+      
+      // Drop the first line that still contains "@example"
+      const codeLines =
+        rawLines.length > 1
+          ? rawLines                   // use tokens if present
+          : exDesc.split('\n');                        // fallback to description
+      
+      const exampleCode = codeLines.join('\n');
+      
+      mdx += `\`\`\`ts\n${exampleCode}\n\`\`\`\n`;
+    })
   }
 
   // Fallback for other tags
