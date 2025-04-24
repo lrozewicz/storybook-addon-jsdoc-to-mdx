@@ -58,6 +58,13 @@ export function extractMethodFromCode(code: string, methodName: string): string 
   return code.slice(start, end).trim();
 }
 
+function encode(str:string) {
+  return str
+    .replace(/[-`]/g, '\\$&')   // \- and \`
+    .replace(/</g, '&lt;')      // <
+    .replace(/>/g, '&gt;');     // >
+}
+
 export function formatJsDocComment(raw: string): string {
   const trimmedRaw = raw.trim();
   // Return plain strings unchanged (non JSDoc comments)
@@ -77,7 +84,7 @@ export function formatJsDocComment(raw: string): string {
   const quotedDescription = description
     .trim()
     .split('\n')
-    .map(line => `> ${line}`)
+    .map(line => `> ${encode(line)}`)
     .join('\n');
 
   let mdx = quotedDescription + '\n\n';
@@ -85,7 +92,7 @@ export function formatJsDocComment(raw: string): string {
   // Parameters
   if (grouped.param) {
     const paramsBlock = grouped.param
-      .map(t => `- \`${t.name}\` ${t.type ? `*${t.type}*` : ''} — ${t.description.trim().replace(/^-/g, '').trim()}`)
+      .map(t => `- \`${t.name}\` ${t.type ? `*${encode(t.type)}*` : ''} — ${encode(t.description.trim().replace(/^-/g, '').trim())}`)
       .join('\n');
     mdx += `#### Parameter:\n\n${paramsBlock}\n`;
   }
@@ -94,7 +101,7 @@ export function formatJsDocComment(raw: string): string {
   const returnsGroup = grouped.returns || grouped.return;
   if (returnsGroup) {
     const { type = '', description: retDesc = '' } = returnsGroup[0];
-    mdx += `#### Returns:\n${type ? `\`${type}\`` : ''}  ${retDesc}\n`;
+    mdx += `#### Returns:\n${type ? `\`${encode(type)}\`` : ''}  ${encode(retDesc)}\n`;
   }
 
   // Example
@@ -112,8 +119,8 @@ export function formatJsDocComment(raw: string): string {
     const lines = tagList
       .map(t =>
         t.name
-          ? `- \`${t.name}\`${t.type ? ` *${t.type}*` : ''} — ${t.description}`
-          : t.description,
+          ? `- \`${t.name}\`${t.type ? ` *${t.type}*` : ''} — ${encode(t.description)}`
+          : encode(t.description),
       )
       .join('\n');
 
