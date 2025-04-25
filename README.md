@@ -236,14 +236,6 @@ I am always looking to improve and expand the capabilities of my Storybook addon
 - **AI-powered JSDoc Generation**: Exploring the integration of advanced AI (like Large Language Models) to automatically generate JSDoc comments for your code, making the documentation process even more seamless.
 - **Markdown Support in JSDoc**: Enhanced support for Markdown formatting within JSDoc comments.
 
-## Contribution
-
-Contributions are welcome! If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md) file for details.
-
 ## Troubleshooting
 
 ### HTML Tags in JSDoc Comments
@@ -283,3 +275,11 @@ framework: {
 
 - Thanks to the Storybook community for the continuous support and inspiration.
 - Special thanks to everyone who contributed to making this addon better.
+
+## Contribution
+
+Contributions are welcome! If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md) file for details.
