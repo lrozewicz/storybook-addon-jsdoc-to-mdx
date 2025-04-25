@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import { Button } from './Button';
 import './header.css';
 
-export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
+export const Header = ({ 
+  user = null, 
+  onLogin = () => {}, 
+  onLogout = () => {}, 
+  onCreateAccount = () => {} 
+}) => (
   <header>
     <div className="storybook-header">
       <div>
@@ -49,11 +54,7 @@ Header.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }),
-  onLogin: PropTypes.func.isRequired,
-  onLogout: PropTypes.func.isRequired,
-  onCreateAccount: PropTypes.func.isRequired,
-};
-
-Header.defaultProps = {
-  user: null,
+  onLogin: PropTypes.func,
+  onLogout: PropTypes.func,
+  onCreateAccount: PropTypes.func,
 };

@@ -1,13 +1,33 @@
 {
   "name": "storybook-addon-jsdoc-to-mdx",
-  "version": "1.0.4",
-  "description": "Automatically generates MDX documentation from JSDoc comments for Storybook.",
+  "version": "1.1.0",
+  "description": "Storybook addon that automatically generates MDX documentation from JSDoc comments in your TypeScript and JavaScript files. Supports HTML tags in comments, complex TypeScript types, and integrates seamlessly with Storybook 7.x and 8.x.",
   "author": "Łukasz Różewicz <lukasz.rozewicz@lucaswebart.pl>",
-  "keywords": ["storybook-addons", "jsdoc", "mdx", "documentation"],
+  "keywords": [
+    "storybook-addons",
+    "jsdoc",
+    "mdx",
+    "documentation",
+    "typescript",
+    "react",
+    "storybook",
+    "addon",
+    "auto-documentation",
+    "jsdoc-to-mdx",
+    "code-documentation",
+    "typedoc",
+    "html-in-jsdoc",
+    "component-documentation"
+  ],
   "storybook": {
     "displayName": "storybook-addon-jsdoc-to-mdx",
     "supportedFrameworks": ["react", "vue", "angular", "web-components", "ember", "html", "svelte", "preact", "react-native"],
     "icon": "https://raw.githubusercontent.com/lrozewicz/storybook-addon-jsdoc-to-mdx/master/assets/images/logo-min.png"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest"
   },
   "repository": {
     "type": "git",
@@ -22,7 +42,8 @@
   "files": ["dist"],
   "license": "MIT",
   "peerDependencies": {
-    "@storybook/react": ">=6"
+    "@storybook/react": ">=6",
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",

@@ -39,14 +39,21 @@ export function formatJsDocComment(comment: string): string {
   // We are looking for the index of the first tag
   const tagsIndex = lines.findIndex((line) => line.startsWith("@"));
 
+  // Escape HTML tags to prevent MDX parsing errors
+  const escapeHtmlTags = (text: string): string => {
+    return text.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  };
+
   // Handling the case where there are no tags
   if (tagsIndex === -1) {
-    return lines.join("\n").trim() + "\n\n```bash\n\n```";
+    const escapedContent = escapeHtmlTags(lines.join("\n").trim());
+    return escapedContent + "\n\n```bash\n\n```";
   }
 
   // We separate the description from the tags
-  const description = lines.slice(0, tagsIndex).join("\n").trim();
-  const tags = lines.slice(tagsIndex).join("\n").trim().split("@").join("\n@").slice(1);
+  const description = escapeHtmlTags(lines.slice(0, tagsIndex).join("\n").trim());
+  const tagsContent = lines.slice(tagsIndex).join("\n").trim().split("@").join("\n@").slice(1);
+  const escapedTags = escapeHtmlTags(tagsContent);
 
-  return `${description}\n\n\`\`\`bash\n${tags}\n\`\`\``;
+  return `${description}\n\n\`\`\`bash\n${escapedTags}\n\`\`\``;
 }
