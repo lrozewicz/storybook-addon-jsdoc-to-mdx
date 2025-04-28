@@ -16,7 +16,16 @@ export const LoggedIn = {
     user: {
       name: 'Jane Doe',
     },
+    onLogin: () => {},
+    onLogout: () => {},
+    onCreateAccount: () => {},
   },
 };
 
-export const LoggedOut = {};
+export const LoggedOut = {
+  args: {
+    onLogin: () => {},
+    onLogout: () => {},
+    onCreateAccount: () => {},
+  },
+};

@@ -57,8 +57,8 @@ export function extractMethodFromCode(code: string, methodName: string): string 
   const end = methodNode.end;
   return code.slice(start, end).trim();
 }
-
-function encode(str:string) {
+// Escape HTML tags to prevent MDX parsing errors
+function escapeHtmlTags(str:string) {
   return str
     .replace(/[-`]/g, '\\$&')   // \- and \`
     .replace(/[{}]/g, '\\$&')   // \{ and \}
@@ -85,7 +85,7 @@ export function formatJsDocComment(raw: string): string {
   const quotedDescription = description
     .trim()
     .split('\n')
-    .map(line => `> ${encode(line)}`)
+    .map(line => `> ${escapeHtmlTags(line)}`)
     .join('\n');
 
   let mdx = quotedDescription + '\n\n';
@@ -93,7 +93,7 @@ export function formatJsDocComment(raw: string): string {
   // Parameters
   if (grouped.param) {
     const paramsBlock = grouped.param
-      .map(t => `- \`${t.name}\` ${t.type ? `*${encode(t.type)}*` : ''} — ${encode(t.description.trim().replace(/^-/g, '').trim())}`)
+      .map(t => `- \`${t.name}\` ${t.type ? `*${escapeHtmlTags(t.type)}*` : ''} — ${escapeHtmlTags(t.description.trim().replace(/^-/g, '').trim())}`)
       .join('\n');
     mdx += `#### Parameter:\n\n${paramsBlock}\n`;
   }
@@ -102,7 +102,7 @@ export function formatJsDocComment(raw: string): string {
   const returnsGroup = grouped.returns || grouped.return;
   if (returnsGroup) {
     const { type = '', description: retDesc = '' } = returnsGroup[0];
-    mdx += `#### Returns:\n${type ? `\`${encode(type)}\`` : ''}  ${encode(retDesc)}\n`;
+    mdx += `#### Returns:\n${type ? `\`${escapeHtmlTags(type)}\`` : ''}  ${escapeHtmlTags(retDesc)}\n`;
   }
 
   // Example
@@ -138,8 +138,8 @@ export function formatJsDocComment(raw: string): string {
     const lines = tagList
       .map(t =>
         t.name
-          ? `- \`${t.name}\`${t.type ? ` *${t.type}*` : ''} — ${encode(t.description)}`
-          : encode(t.description),
+          ? `- \`${t.name}\`${t.type ? ` *${t.type}*` : ''} — ${escapeHtmlTags(t.description)}`
+          : escapeHtmlTags(t.description),
       )
       .join('\n');
 
@@ -148,3 +148,4 @@ export function formatJsDocComment(raw: string): string {
 
   return mdx.trim();
 }
+
