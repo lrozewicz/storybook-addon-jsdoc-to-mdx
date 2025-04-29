@@ -7,7 +7,7 @@ module.exports = {
   // Function to modify Storybook configuration
   managerEntries: (entry = [], options = {}) => {
     // Read the configuration options passed to the preset
-    const { folderPaths, extensions } = options;
+    const { folderPaths, extensions, outputPath } = options;
 
     // Set up file watchers for auto-regeneration
     if (folderPaths && extensions) {
@@ -34,7 +34,7 @@ module.exports = {
         }
         
         // Re-analyze the folder containing the changed file
-        analyzeFolders([path.dirname(changedFilePath)], extensions);
+        analyzeFolders([path.dirname(changedFilePath)], extensions, outputPath);
         console.log(`Regenerated MDX for: ${changedFilePath}`);
       });
       
@@ -43,7 +43,7 @@ module.exports = {
 
     // Initial generation
     if (folderPaths && extensions) {
-      analyzeFolders(folderPaths, extensions);
+      analyzeFolders(folderPaths, extensions, outputPath);
     }
 
     return entry;
