@@ -1,6 +1,6 @@
 /**
  * Logging decorator that logs the class instantiation.
- * @param {Function} constructor The constructor of the class. sss
+ * @param {Function} constructor The constructor of the class.
  */
 function logClass(constructor: Function) {
     console.log(`Class ${constructor.name} initialized.`);
