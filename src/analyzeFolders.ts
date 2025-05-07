@@ -6,7 +6,7 @@ import fs from "fs";
 import path from "path";
 import type { JsDocComment } from "./types/common";
 
-export function analyzeFolders(folderPaths: string[], extensions: string[]): void {
+export function analyzeFolders(folderPaths: string[], extensions: string[], outputPath?: string): void {
   const project = new Project();
   folderPaths.forEach((folderPath: string) => {
     extensions.forEach((extension) => {
@@ -14,10 +14,10 @@ export function analyzeFolders(folderPaths: string[], extensions: string[]): voi
     });
   });
 
-  project.getSourceFiles().forEach((sourceFile) => analyzeSourceFile(sourceFile, folderPaths));
+  project.getSourceFiles().forEach((sourceFile) => analyzeSourceFile(sourceFile, folderPaths, outputPath));
 }
 
-export function analyzeSourceFile(sourceFile: SourceFile, folderPaths: string[]): void {
+export function analyzeSourceFile(sourceFile: SourceFile, folderPaths: string[], outputPath?: string): void {
   const baseDir = findBasePath(sourceFile.getFilePath(), folderPaths);
   const jsDocComments: JsDocComment[] = [];
 
@@ -26,7 +26,7 @@ export function analyzeSourceFile(sourceFile: SourceFile, folderPaths: string[])
   if (jsDocComments.length > 0) {
     const pathName = getPathName(sourceFile.getFilePath(), baseDir);
     const mdxContent = generateMdxContent(jsDocComments, pathName);
-    const mdxFilePath = getMdxFilePath(sourceFile.getFilePath());
+    const mdxFilePath = getMdxFilePath(sourceFile.getFilePath(), outputPath);
     writeMdxFile(mdxFilePath, mdxContent);
   }
 }
@@ -62,6 +62,11 @@ export function writeMdxFile(filePath: string, content: string): void {
   fs.writeFileSync(filePath, content);
 }
 
-function getMdxFilePath(filePath: string): string {
-  return filePath.replace(/\.[^/.]+$/, ".doc.mdx");
+function getMdxFilePath(filePath: string, outputPath?: string): string {
+  if (outputPath && !fs.existsSync(outputPath)) {
+    fs.mkdirSync(outputPath);
+  }
+  return outputPath ?
+    path.join(outputPath, path.basename(filePath).replace(/\.[^/.]+$/, ".doc.mdx")) :
+    filePath.replace(/\.[^/.]+$/, ".doc.mdx");
 }

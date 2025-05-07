@@ -86,7 +86,8 @@ module.exports = {
       name: 'storybook-addon-jsdoc-to-mdx',
       options: {
         folderPaths: ['./src/'], // paths to folders with JS/TS code
-        extensions: ['ts', 'js'] // file extensions to include
+        extensions: ['ts', 'js'], // file extensions to include
+        outputPath: './src' // output path for MDX files
       }
     }
   ]
@@ -115,6 +116,7 @@ const config = {
       options: {
         folderPaths: ["./code"],
         extensions: ["ts", "js"]
+        outputPath: './src/stories'
       },
     },
     "@chromatic-com/storybook"
@@ -187,6 +189,7 @@ The addon can be configured with the following options:
 
 - `folderPaths`: An array of paths to folders containing your source files.
 - `extensions`: An array of file extensions to be included in the documentation generation process.
+- `outputPath`: The path where MDX files are created
 
 ## Features
 
