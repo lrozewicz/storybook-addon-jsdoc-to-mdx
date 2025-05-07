@@ -1,6 +1,6 @@
 {
   "name": "storybook-addon-jsdoc-to-mdx",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Storybook addon that automatically generates MDX documentation from JSDoc comments in your TypeScript and JavaScript files. Supports HTML tags in comments, complex TypeScript types, and integrates seamlessly with Storybook 7.x and 8.x.",
   "author": "Łukasz Różewicz <lukasz.rozewicz@lucaswebart.pl>",
   "keywords": [
@@ -21,7 +21,17 @@
   ],
   "storybook": {
     "displayName": "storybook-addon-jsdoc-to-mdx",
-    "supportedFrameworks": ["react", "vue", "angular", "web-components", "ember", "html", "svelte", "preact", "react-native"],
+    "supportedFrameworks": [
+      "react",
+      "vue",
+      "angular",
+      "web-components",
+      "ember",
+      "html",
+      "svelte",
+      "preact",
+      "react-native"
+    ],
     "icon": "https://raw.githubusercontent.com/lrozewicz/storybook-addon-jsdoc-to-mdx/master/assets/images/logo-min.png"
   },
   "publishConfig": {
@@ -39,7 +49,9 @@
     "prepare": "npm run build",
     "test": "tsc --noEmit --incremental false && jest --silent --maxWorkers=2"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "license": "MIT",
   "peerDependencies": {
     "@storybook/react": ">=6",
@@ -52,7 +64,8 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "ts-morph": "^25.0.0",
-    "comment-parser": "^1.4.1"
+    "chokidar": "^3.6.0",
+    "comment-parser": "^1.4.1",
+    "ts-morph": "^25.0.0"
   }
 }
