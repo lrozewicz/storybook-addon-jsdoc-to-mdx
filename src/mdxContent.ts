@@ -2,7 +2,7 @@ import { formatJsDocComment, removeCommentsFromCode, extractMethodFromCode } fro
 import type { JsDocComment } from "./types/common";
 
 export function createMdxContent(jsDocComments: JsDocComment[], pathName: string): string {
-  let mdxContent = `import { Meta } from '@storybook/blocks';\n\n<Meta title="${pathName}" />\n\n`;
+  let mdxContent = `import { Meta } from '@storybook/addon-docs/blocks';\n\n<Meta title="${pathName}" />\n\n`;
 
   jsDocComments.forEach((comment: JsDocComment) => {
     if (comment.name != "Unnamed") {
