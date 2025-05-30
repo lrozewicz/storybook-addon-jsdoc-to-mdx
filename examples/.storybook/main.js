@@ -5,20 +5,13 @@ const config = {
     "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
 
-  addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-onboarding",
-    "@storybook/addon-interactions",
-    {
-      name: "storybook-addon-jsdoc-to-mdx",
-      options: {
-        folderPaths: ["./code"],
-        extensions: ["ts", "js"]
-      },
+  addons: ["@storybook/addon-links", "@storybook/addon-onboarding", {
+    name: "storybook-addon-jsdoc-to-mdx",
+    options: {
+      folderPaths: ["./code"],
+      extensions: ["ts", "js"]
     },
-    "@chromatic-com/storybook"
-  ],
+  }, "@chromatic-com/storybook", "@storybook/addon-docs"],
 
   framework: {
     name: "@storybook/react-webpack5",
@@ -29,9 +22,6 @@ const config = {
     },
   },
 
-  docs: {
-    autodocs: true
-  },
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.(js|jsx)$/,
@@ -45,6 +35,6 @@ const config = {
     });
 
     return config;
-  },
+  }
 };
 export default config;
