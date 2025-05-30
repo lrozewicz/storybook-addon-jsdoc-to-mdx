@@ -1,0 +1,91 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="code/exampleClass" />
+
+# Rectangle
+
+`code/exampleClass`
+**AST Node Type:** *ClassDeclaration*
+
+> Represents a rectangle.
+
+#### Source Code:
+
+```ts
+class Rectangle {
+    private width: number;
+    private height: number;
+    constructor(width: number, height: number) {
+        this.width = width;
+        this.height = height;
+    }
+    area(): number {
+        return this.width * this.height;
+    }
+}
+
+```
+
+----- 
+`code/exampleClass`
+**AST Node Type:** *PropertyDeclaration*
+> The width of the rectangle.
+
+#### Source Code:
+
+```ts
+width: number;
+
+```
+
+----- 
+`code/exampleClass`
+**AST Node Type:** *PropertyDeclaration*
+> The height of the rectangle.
+
+#### Source Code:
+
+```ts
+height: number;
+
+```
+
+----- 
+`code/exampleClass`
+**AST Node Type:** *Constructor*
+> Creates an instance of a Rectangle.
+
+#### Parameter:
+
+- `width` *number* — The width of the rectangle.
+- `height` *number* — The height of the rectangle.
+
+#### Source Code:
+
+```ts
+constructor(width, number, height, number);
+{
+    this.width = width;
+    this.height = height;
+}
+
+```
+
+# area
+
+`code/exampleClass`
+**AST Node Type:** *MethodDeclaration*
+
+> Calculates the area of the rectangle.
+
+#### Returns:
+`number`  area of the rectangle.
+
+#### Source Code:
+
+```ts
+area(): number {
+        return this.width * this.height;
+    }
+```
+

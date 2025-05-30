@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="code/enums" />
+
+# Color
+
+`code/enums`
+**AST Node Type:** *EnumDeclaration*
+
+> Enum representing colors.
+
+#### Source Code:
+
+```ts
+enum Color {
+    Red,
+    Green,
+    Blue
+}
+
+```
+
+# getColorName
+
+`code/enums`
+**AST Node Type:** *FunctionDeclaration*
+
+> Function that returns the name of a color.
+
+#### Parameter:
+
+- `color` *Color* — The color.
+#### Returns:
+`string`  name of the color.
+
+#### Source Code:
+
+```ts
+function getColorName(color: Color): string {
+    return Color[color];
+}
+
+```
+

@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="code/decorators" />
+
+# logClass
+
+`code/decorators`
+**AST Node Type:** *FunctionDeclaration*
+
+> Logging decorator that logs the class instantiation.
+
+#### Parameter:
+
+- `constructor` *Function* — The constructor of the class.
+
+#### Source Code:
+
+```ts
+function logClass(constructor: Function) {
+    console.log(`Class ${constructor.name} initialized.`);
+}
+
+```
+
+# DecoratedClass
+
+`code/decorators`
+**AST Node Type:** *ClassDeclaration*
+
+> Class with a logging decorator.
+
+#### Source Code:
+
+```ts
+@logClass
+class DecoratedClass {
+}
+
+```
+

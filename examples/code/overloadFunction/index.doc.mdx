@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="code/overloadFunction" />
+
+# overloadedFunction
+
+`code/overloadFunction`
+**AST Node Type:** *FunctionDeclaration*
+
+> Returns the first argument.
+
+#### Parameter:
+
+- `a` *number* — The first number.
+#### Returns:
+`number`  first number.
+
+#### Source Code:
+
+```ts
+function overloadedFunction(a: number, b?: number): number {
+    return b ? a + b : a;
+}
+
+```
+

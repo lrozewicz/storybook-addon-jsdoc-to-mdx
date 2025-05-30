@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="code/optionalProperties" />
+
+# Person
+
+`code/optionalProperties`
+**AST Node Type:** *InterfaceDeclaration*
+
+> Interface representing a person with an optional age property.
+
+#### Source Code:
+
+```ts
+interface Person {
+    name: string;
+    age?: number;
+}
+
+```
+
+# printPerson
+
+`code/optionalProperties`
+**AST Node Type:** *FunctionDeclaration*
+
+> Function that prints a person's name and optionally age if provided.
+
+#### Parameter:
+
+- `person` *Person* — The person.
+
+#### Source Code:
+
+```ts
+function printPerson(person: Person): void {
+    console.log(`Name: ${person.name}`);
+    if (person.age !== undefined) {
+        console.log(`Age: ${person.age}`);
+    }
+}
+
+```
+
